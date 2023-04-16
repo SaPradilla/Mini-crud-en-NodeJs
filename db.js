@@ -1,21 +1,30 @@
-const Sequelize = require('sequelize')
 
-const LibrosModel = require('./models/libros')
-
-const sequelize = new Sequelize('crudnode','minicrudnode','123',{
-    host: 'jdbc:mysql://localhost:3000/minicrudnode',
-    dialect: 'mysql'
-})
+const { Sequelize } = require('sequelize')
+const { database } = require('./config')
 
 
-const Libro = LibrosModel(sequelize, Sequelize)
-
-sequelize.sync({ force: false})
-    .then(()=> {
-        console.log('Tablas sincronizadas')
-    })
 
 
-module.exports = {
-    Libro
-}
+const sequelize = new Sequelize(
+    database.database,
+    database.username,
+    database.password,{
+        host: database.host,
+        dialect: "mysql"
+    }
+
+)
+
+module.exports = sequelize
+
+// const Libro = LibrosModel(sequelize, Sequelize)
+
+// sequelize.sync({ force: false})
+//     .then(()=> {
+//         console.log('Tablas sincronizadas')
+//     })
+
+
+// module.exports = {
+//     Libro
+// }

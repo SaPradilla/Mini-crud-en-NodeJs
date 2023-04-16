@@ -1,24 +1,25 @@
-
 const express = require('express')
+const app = express()
 const bodyParser = require('body-parser')
 
-const app = express()
+const sequelize = require('./db')
 
-require('./db')
+const Libros = require('./models/libros')
 
-
-
-
-// Base de datos mongoDB
-
-
- 
 
 //Servidor de escucha
 
 
 app.listen(3000, function(){
-    console.log('El servidor iniciado en: 3030')
+    console.log('El servidor iniciado en: 3000')
+
+    //conectar bd
+    sequelize.sync({ force: false}).then(() => {
+        console.log('Te has conectado a la base de datos')
+    }).catch(error =>{
+        console.log('No te has conectado con la base de datos :C')
+    })
+
 })
 
 
@@ -31,13 +32,19 @@ app.use(bodyParser.urlencoded({ extended: true}))
 //Ruta metodo GET
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
+   Libros.create({
+    title: "No se",
+    description: "Es un buen libro, genial!",
+    autor: "Yo"
+   }).then(libros => {
+        res.json(libros)
+   })
 
 })  
  
-
+    
 
 //Ruta metodo POST
 app.post('/formulario', (req, res) =>{
-    
+    console.log('Enviado')
 })

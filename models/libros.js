@@ -1,16 +1,22 @@
+const { Model , DataTypes } = require('sequelize')
+const sequelize = require('../db')
 
+class Libros extends Model{}
 
-module.exports = (sequelize, type) => {
-    return sequelize.define('libros',{
-        id:{
-            type: type.INTEGER,
-            autoIncrement: true,
-            primaryKey:true
-        },
-        title: type.STRING,
-        description:type.STRING,
-        autor: type.STRING,
+Libros.init({
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true
+    },
+    title: DataTypes.STRING,
+    description:DataTypes.STRING,
+    autor: DataTypes.STRING,
 
-    })
-
+}, {
+    sequelize,
+    modelName: "libros"
 }
+)
+
+module.exports = Libros
