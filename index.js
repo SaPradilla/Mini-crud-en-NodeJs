@@ -1,14 +1,16 @@
+
 const express = require('express')
+
 const app = express()
+
+
 const bodyParser = require('body-parser')
 
 const sequelize = require('./db')
 
-const Libros = require('./models/libros')
 
 
 //Servidor de escucha
-
 
 app.listen(3000, function(){
     console.log('El servidor iniciado en: 3000')
@@ -30,21 +32,10 @@ app.use(bodyParser.urlencoded({ extended: true}))
 
 
 //Ruta metodo GET
-
-app.get('/', (req, res) => {
-   Libros.create({
-    title: "No se",
-    description: "Es un buen libro, genial!",
-    autor: "Yo"
-   }).then(libros => {
-        res.json(libros)
-   })
-
-})  
  
-    
 
 //Ruta metodo POST
-app.post('/formulario', (req, res) =>{
-    console.log('Enviado')
-})
+app.use('/api/post', require('./routes/post'))   
+app.use('/api/libros', require('./routes/libros'))
+
+
