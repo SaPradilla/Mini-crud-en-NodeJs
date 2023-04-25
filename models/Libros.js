@@ -17,7 +17,6 @@ Libros.init({
 }, {
     sequelize,
     modelName: "libros"
-}
-)
+})
 
 module.exports = Libros

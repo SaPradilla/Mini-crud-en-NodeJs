@@ -5,7 +5,6 @@ const { database } = require('./config')
 
 
 
-
 const sequelize = new Sequelize(
     database.database,
     database.username,
@@ -17,15 +16,3 @@ const sequelize = new Sequelize(
 )
 
 module.exports = sequelize
-
-// const Libro = LibrosModel(sequelize, Sequelize)
-
-// sequelize.sync({ force: false})
-//     .then(()=> {
-//         console.log('Tablas sincronizadas')
-//     })
-
-
-// module.exports = {
-//     Libro
-// }

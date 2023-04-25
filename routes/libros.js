@@ -2,13 +2,6 @@ const express = require('express')
 const router = express.Router()
 const Libros = require('../models/Libros')
 
-
-router.get('/', (req,res ) => {
-    res.send("Prueba")
-})
-    
-
-
 //Crear 
 router.post('/', (req,res)=>{
     Libros.create({
@@ -54,8 +47,8 @@ router.delete('/:id',(req, res) => {
         where: {
             id: req.params.id
         }
-    }).then(result => {
-        res.json(result)
     })
 })
+
+
 module.exports = router
