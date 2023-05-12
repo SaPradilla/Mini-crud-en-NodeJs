@@ -1,11 +1,11 @@
-const { Model , DataTypes } = require('sequelize')
+const { Model, DataTypes} = require("sequelize")
 
 const sequelize = require('../db')
 
-class Libros extends Model{}
+ 
 
 Libros.init({
-    id: {
+    id:{
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -14,6 +14,7 @@ Libros.init({
     description:DataTypes.STRING,
     autor: DataTypes.STRING,
 
+    
 }, {
     sequelize,
     modelName: "libros"

@@ -14,7 +14,7 @@ router.post('/registro',async (req,res) => {
             name,
             lastname,
             email,
-            password: await bcrypt.hash(password, 10)
+            password :await bcrypt.hash(password, 10)
         })
         
         res.json(newLibrian)
@@ -53,9 +53,11 @@ router.post('/login',async (res,req) =>{
 
 //READ
 router.get('/:id', (req,res) =>{
+
     Librarian.findByPk(req.params.id).then(librarian =>{
         res.json(librarian)
     })
+
 })
 
 //UPTADE
@@ -72,7 +74,7 @@ router.patch('/:id',(req,res) =>{
 
     }).then(result => {
         res.json(result)
-    })
+    })  
     
 })
 
