@@ -11,6 +11,8 @@ const sequelize = require('./db')
 
 //Servidor de escucha
 
+
+
 app.listen(3000, function(){
 
     console.log('El servidor iniciado en: 3000')
